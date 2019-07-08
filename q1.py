@@ -16,14 +16,19 @@ def Newton(x,y,x1):
     order1 = b0
     order2 = b0 + b1 * (x1 - x[0])
     return order2
-print(Newton(x,y,45*math.pi/180))
+print("Newton: ",Newton(x,y,45*math.pi/180))
 
 def lang(x,y,x1):
-    b0 = y[0] * ((x1 - x[1]) / (x[0] - x[1]))
-    b1 = y[0] * ((x1 - x[0]) / (x[1] - x[0]))
-
-    result = b0 + b1
+    n = len(x)
+    result = 0
+    for i in range(0,n):
+        subtot = 1
+        for j in range(0,n):
+            if(i != j):
+                subtot *= ((x1 - x[j]) / (x[i] - x[j]))
+        result += subtot * y[i]
     return result
 
-print(lang(x,y,45*math.pi/180))
+
+print("Langarange ", lang(x,y,45*math.pi/180))
 
